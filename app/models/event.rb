@@ -25,4 +25,9 @@ class Event < ApplicationRecord
       errors.add(:duration, "La durée doit être un multiple de 5 et strictement positif")
     end
   end
+
+  def end_date
+    self.start_date + self.duration * 60
+  end
+
 end

@@ -1,0 +1,36 @@
+<%= form_tag url_for(action: 'create'), method: "post", class: "text-center border border-light p-5" do %>
+
+    <p class="h4 mb-4">Créer d'un nouvel événément</p>
+
+    <!-- Title -->
+    <%= text_field_tag 'title',nil , type: "title", class: "form-control mb-4", placeholder: "Titre" %>
+
+    <!-- Location -->
+    <%= text_field_tag 'location',nil , type: "location", class: "form-control mb-4", placeholder: "Location" %>
+
+    <!-- Price -->
+    <%= number_field_tag 'price',nil , type: "price", class: "form-control mb-4", placeholder: "Choisis ton prix" %>
+
+    <!-- Start Date -->
+    <%= text_field_tag 'start_date',nil , type: "start_date", class: "form-control mb-4", placeholder: "Choisis ta date sous ce format AAAA-MM-JJ H:M" %>
+
+    <!-- Duration -->
+    <%= number_field_tag 'duration',nil , type: "duration", class: "form-control mb-4", placeholder: "Durée en seconde" %>
+
+    <!-- Description -->
+    <%= text_field_tag 'description',nil , type: "description", class: "form-control mb-4", placeholder: "Explique ton projet" %>
+
+    <!-- Create button -->
+    <%= submit_tag "Créer mon évènement", class: "btn btn-info btn-block my-4", type: "submit" %>
+
+
+<% end %>
+
+<% if @event.errors.any? %>
+  <p>Nous n'avons pas réussi à créer l'évènement pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
