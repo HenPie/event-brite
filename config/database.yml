@@ -79,7 +79,4 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: eventbrite_again_production
-  username: eventbrite_again
-  password: <%= ENV['EVENTBRITE_AGAIN_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
