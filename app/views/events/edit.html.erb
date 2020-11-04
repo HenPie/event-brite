@@ -1,0 +1,16 @@
+<h1>Editer l'évènement</h1>
+
+<%= form_for @event do |f| %>
+  <div class="form-group">
+    <label>Titre de l'article</label>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label>Contenu de l'article</label>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Modifier l'évènement</button>
+    <a href="/events/<%=(@event.id)%>%>" class="btn btn-danger" data-confirm="êtes-vous sûr ?" data-method="DELETE">Supprimer l'évènement</a>
+  </div>
+<% end %>

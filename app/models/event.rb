@@ -30,4 +30,14 @@ class Event < ApplicationRecord
     self.start_date + self.duration * 60
   end
 
+  def is_user_attending?(user)
+    if self.attendances.where(user_id: user.id) != nil
+      puts "The user is attending"
+      return true
+    else 
+      puts "The user is not attending"
+      return false
+    end
+  end
+
 end
