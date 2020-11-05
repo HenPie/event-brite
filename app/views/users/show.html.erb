@@ -2,11 +2,22 @@
   <div class="card-header">
     <%= @user.first_name %> <%= @user.last_name %>
   </div>
+  <h3>Avatar actuel</h3>
+  <%if @user.avatar.attached?%>
+    <%= image_tag @user.avatar, alt: 'avatar' %>
+  <%else%>
+    <%= image_tag ("/loris.jpg") %>
+  <%end%>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Email: <%= @user.email %></li>
     <li class="list-group-item">Description: <%= @user.description %></li>
   </ul>
   <p><%= link_to "Modifier mes informations", edit_user_registration_path, :class => "btn btn-info" %></p>
+  <h3>Changer d'avatar ?</h3>
+  <%= form_tag user_avatars_path(@user), multipart: true do %>
+    <%= file_field_tag :avatar %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
   
 </div>
 

@@ -13,6 +13,7 @@ class Event < ApplicationRecord
   validates :description, presence: true, length: { in: 20..1000}
   validates :price, presence: true, numericality: {greater_than: 1, less_than: 1000}
   validates :location, presence: true
+  has_one_attached :photo
 
   def is_start_date_past?
     if start_date < Time.now
